@@ -23,7 +23,7 @@ function pj --description "Jump to a project"
     if test -n "$target"
       eval $EDITOR $target
     else
-      echo "No such project: $argv[1]"
+      echo "No such project: $argv[2]"
       return 1
     end
 
