@@ -39,3 +39,16 @@ function pj --description "Jump to a project"
   end
 end
 
+function __project_basenames --description "List of project basenames"
+  set -l project_basenames
+
+  for pp in $PROJECT_PATHS
+    set -a project_basenames (basename $pp)
+
+    for project in (ls -d $pp/*/)
+      set -a project_basenames (basename $project)
+    end
+  end
+
+  echo $project_basenames
+end
