@@ -18,7 +18,7 @@ function pj --description "Jump to a project"
     echo 'Usage: pj [open] [PROJECT]'
 
   else if test $argv[1] = "open"
-    set -l target (find $PROJECT_PATHS -mindepth 1 -maxdepth 1 -name $argv[2] | head -n 1)
+    set -l target (find $PROJECT_PATHS -maxdepth 1 -name $argv[2] | head -n 1)
 
     if test -n "$target"
       eval $EDITOR $target
@@ -28,7 +28,7 @@ function pj --description "Jump to a project"
     end
 
   else
-    set -l target (find $PROJECT_PATHS -mindepth 1 -maxdepth 1 -name $argv[1] | head -n 1)
+    set -l target (find $PROJECT_PATHS -maxdepth 1 -name $argv[1] | head -n 1)
 
     if test -n "$target"
       cd $target
