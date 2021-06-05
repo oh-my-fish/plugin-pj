@@ -21,6 +21,7 @@ function pj --description "Jump to a project"
     set -l target (find $PROJECT_PATHS -maxdepth 1 -name $argv[2] | head -n 1)
 
     if test -n "$target"
+      cd $target
       eval $EDITOR $target
     else
       echo "No such project: $argv[2]"
