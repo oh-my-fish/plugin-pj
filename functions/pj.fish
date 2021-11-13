@@ -44,10 +44,13 @@ function __project_basenames --description "List of project basenames"
   set -l project_basenames
 
   for pp in $PROJECT_PATHS
-    set -a project_basenames (basename $pp)
+    set -l contains_files (ls -A $pp 2>/dev/null)
 
-    for project in (ls -d $pp/*/)
-      set -a project_basenames (basename $project)
+    if test -n "$contains_files"
+      set -a project_basenames (basename $pp)
+      for project in (ls -d $pp/*/)
+        set -a project_basenames (basename $project)
+      end
     end
   end
 
