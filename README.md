@@ -52,8 +52,6 @@ $ pj open foo-project
 
 Print work directory of project.
 
-Print work directory of project.
-
 ```fish
 $ pj pwd foo-project
 
