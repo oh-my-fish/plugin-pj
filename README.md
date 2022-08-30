@@ -50,6 +50,17 @@ will open the project with the `$EDITOR` configured on your system.
 $ pj open foo-project
 ```
 
+Print work directory of project.
+
+Print work directory of project.
+
+```fish
+$ pj pwd foo-project
+
+# abbr example: Execute project scripts anywhere
+$ abbr foo 'pushd (pj pwd foo-project)/path/to/script; foo-command; popd'
+```
+
 Protip: You can set an abbrebiation in your shell for the above, like `pjo`.
 
 ```fish
