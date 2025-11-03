@@ -67,8 +67,8 @@ function __project_basenames --description "List of project basenames"
 
     if test -n "$contains_files"
       set -a project_basenames (basename $pp)
-      for project in (ls -d $pp/*/)
-        set -a project_basenames (basename $project)
+      for project in (find "$pp" -maxdepth 1 -mindepth 1 -type d -not -name '.*' -exec basename {} \;)
+        set -a project_basenames $project
       end
     end
   end
