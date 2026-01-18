@@ -18,18 +18,18 @@ function pj --description "Jump to a project"
     echo 'Usage: pj [open] [PROJECT]'
 
   else if test $argv[1] = "open"
-    set -l target (find $PROJECT_PATHS -maxdepth 1 -name $argv[2] | head -n 1)
+    set -l target (find $PROJECT_PATHS -maxdepth 1 -name "$argv[2]" | head -n 1)
 
     if test -n "$target"
-      cd $target
-      eval $EDITOR $target
+      cd "$target"
+      $EDITOR "$target"
     else
       echo "No such project: $argv[2]"
       return 1
     end
 
   else
-    set -l target (find $PROJECT_PATHS -maxdepth 1 -name $argv[1] | head -n 1)
+    set -l target (find $PROJECT_PATHS -maxdepth 1 -name "$argv[1]" | head -n 1)
 
     if test -n "$target"
       cd $target
@@ -54,5 +54,5 @@ function __project_basenames --description "List of project basenames"
     end
   end
 
-  echo $project_basenames
+  printf '%s\n' $project_basenames
 end
