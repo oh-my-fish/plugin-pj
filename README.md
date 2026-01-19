@@ -62,15 +62,15 @@ $ pj open
 
 # License
 
-[MIT][mit] © [Espen Henriksen][author] et [al][contributors]
+[MIT][mit] © [Eline Henriksen][author] et [al][contributors]
 
 
 [jdp-pj]:         https://gist.github.com/pjaspers/368394#gistcomment-1016
 [omz-pj]:         https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/pj
 
 [mit]:            https://opensource.org/licenses/MIT
-[author]:         https://github.com/esphen
-[contributors]:   https://github.com/esphen/plugin-pj/graphs/contributors
+[author]:         https://github.com/eliihen
+[contributors]:   https://github.com/eliihen/plugin-pj/graphs/contributors
 [omf-link]:       https://www.github.com/oh-my-fish/oh-my-fish
 
 [license-badge]:  https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square
