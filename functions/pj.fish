@@ -1,4 +1,14 @@
+
 function pj --description "Jump to a project"
+  function __pj_usage
+    echo 'Usage: pj [command] [PROJECT]'
+    echo 'command:'
+    echo '  open  open EDITOR in project directory'
+    echo '  pwd   print work directory of project'
+    echo '  default command is cd if ommit'
+    functions -e __pj_usage
+  end
+
   set -l argc (count $argv)
 
   if test (count $PROJECT_PATHS) -eq 0
@@ -7,15 +17,15 @@ function pj --description "Jump to a project"
     return 1
 
   else if test $argc -le 0 -o $argc -gt 2
-    echo 'Usage: pj [open] [PROJECT]'
+    __pj_usage
     return 1
 
-  else if test $argc -eq 2 -a $argv[1] != 'open'
-    echo 'Usage: pj [open] [PROJECT]'
+  else if test $argc -eq 2 && ! contains $argv[1] 'open' 'pwd'
+    __pj_usage
     return 1
 
   else if contains -- --help $argv
-    echo 'Usage: pj [open] [PROJECT]'
+    __pj_usage
 
   else if test $argv[1] = "open"
     set -l target (find $PROJECT_PATHS -maxdepth 1 -name "$argv[2]" | head -n 1)
@@ -23,6 +33,15 @@ function pj --description "Jump to a project"
     if test -n "$target"
       cd "$target"
       $EDITOR "$target"
+    else
+      echo "No such project: $argv[2]"
+      return 1
+    end
+
+  else if test $argv[1] = "pwd"
+    set -l target (find $PROJECT_PATHS -maxdepth 1 -name $argv[2] | head -n 1)
+    if test -n "$target"
+      echo $target
     else
       echo "No such project: $argv[2]"
       return 1
